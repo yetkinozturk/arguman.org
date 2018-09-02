@@ -29,7 +29,7 @@ class PremiseCreationForm(FormRenderer, forms.ModelForm):
 
     def clean(self):
         form_data = self.cleaned_data
-        if not form_data['related_argument'] and not form_data['text']:
+        if not form_data.get('related_argument',None) and not form_data.get('text',None):
             raise ValidationError(_('You should write a premise or link an argument.'))
         return form_data
 
